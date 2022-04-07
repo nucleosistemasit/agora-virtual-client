@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/style-estande-client.css">
     </head>
 <body>
-    <div class="icons-div">
+    <div class="icons-div" style="position: absolute;">
         <div class="inner-icons-div">
             <i class="glyphicon glyphicon-cloud"></i>
         </div>
@@ -23,7 +23,56 @@
             <i class="glyphicon glyphicon-cloud"></i>
         </div>
     </div>
-    <div class="messages-div"><div>
+    <div id="sidePanel" class="side-panel container-fluid" style="left: 100px;">
+        <div class="side-panel-toggle" onclick="toggleChat()"><i class="fas fa-angle-left"></i></div>
+        <div class="banner row"></div>
+        <div class="row dash-name">  
+          <div class="col-4">
+            <img id="host-picture" width="28px" height="28px">
+            <input id="picture-input" type="file"/>
+            <button id="delete-picture">X</button>
+          </div>
+          <input id="local-peer-name" class="col-5 input-group-text type-msg" placeholder="Digite seu nome..." />
+          <button id="connect-peer" class="col-3 btn btn-primary btn-enter" disabled>Entrar</button>
+        </div>
+        <div id="chat" class="chat row chat-client">
+          <span class="scroll-to-bottom-btn"><i id="scrollToBottomBtn" class="fas fa-caret-down"></i></span>	
+        </div>
+        <div id="replyPreview" class="reply-preview reply-off" data-id="">
+          <strong id="sReplyChat" class="s-reply-chat"></strong>
+          <span class="reply-close"><i class="fas fa-close" onclick="closeReply()"></i></span>
+          <span id="replyChat" class="reply-chat">          
+          </span>
+        </div>
+        <div class="row msg-box">
+          <textarea id="message-content" class="type-msg col-10" placeholder="Mensagem..."></textarea>
+          <button id="send-message" class="col-2 btn btn-send-msg"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <div id="unity-container" class="unity-desktop" style="position: absolute; left: 200px;">
+        <canvas id="unity-canvas"></canvas>
+        <div id="unity-loading-bar">
+          <div id="unity-logo"></div>
+          <div id="unity-progress-bar-empty">
+            <div id="unity-progress-bar-full"></div>
+          </div>
+        </div>
+        <div id="unity-mobile-warning">
+          WebGL builds are not supported on mobile devices.
+        </div>
+        <div id="unity-footer">
+          <!-- <div id="unity-webgl-logo"></div>
+          <div id="unity-fullscreen-button"></div>
+          <div id="unity-build-title">Metaverso Caxias</div> -->
+        </div>      
+    </div>
+    <script src="js/reconnecting-websocket.min.js"></script>
+    <script src="js/linkify.min.js"></script>
+    <script src="js/linkify-html.min.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+    <script src="js/main.js"></script> 
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/js.js"></script>    
 </body>
 <footer> 
 </footer>
