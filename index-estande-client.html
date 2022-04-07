@@ -9,19 +9,7 @@
         <link rel="stylesheet" href="css/style-estande-client.css">
     </head>
 <body>
-    <div class="icons-div" style="position: absolute;">
-        <div class="inner-icons-div">
-            <i class="glyphicon glyphicon-cloud"></i>
-        </div>
-        <div class="inner-icons-div">
-            <i class="glyphicon glyphicon-cloud"></i>
-        </div>
-        <div class="inner-icons-div">
-            <i class="glyphicon glyphicon-cloud"></i>
-        </div>
-        <div class="inner-icons-div">
-            <i class="glyphicon glyphicon-cloud"></i>
-        </div>
+    <div id="room-list" class="icons-div" style="position: absolute;">
     </div>
     <div id="sidePanel" class="side-panel container-fluid" style="left: 100px;">
         <div class="side-panel-toggle" onclick="toggleChat()"><i class="fas fa-angle-left"></i></div>
@@ -33,7 +21,7 @@
             <button id="delete-picture">X</button>
           </div>
           <input id="local-peer-name" class="col-5 input-group-text type-msg" placeholder="Digite seu nome..." />
-          <button id="connect-peer" class="col-3 btn btn-primary btn-enter" disabled>Entrar</button>
+          <button id="connect-peer" class="col-3 btn btn-primary btn-enter">Entrar</button>
         </div>
         <div id="chat" class="chat row chat-client">
           <span class="scroll-to-bottom-btn"><i id="scrollToBottomBtn" class="fas fa-caret-down"></i></span>	
@@ -49,7 +37,7 @@
           <button id="send-message" class="col-2 btn btn-send-msg"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
-    <div id="unity-container" class="unity-desktop" style="position: absolute; left: 200px;">
+    <div id="unity-container" class="unity-desktop" style="position: absolute; left: 500px;">
         <canvas id="unity-canvas"></canvas>
         <div id="unity-loading-bar">
           <div id="unity-logo"></div>

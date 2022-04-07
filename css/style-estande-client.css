@@ -14,6 +14,7 @@ p{
     height: 100vh;
     background-color: #f8f8f8;
     text-align: center;
+    overflow-y: auto;
     /* z-index: 100; */
 }
 .inner-icons-div{
@@ -25,6 +26,7 @@ p{
     margin-top: 10px;
     outline: 3px outset rgba(202, 196, 196, 0.116);
     box-shadow: 0 0px 20px rgb(0 0 0 / 20%);
+    cursor: pointer;
 }
 
 .inner-icons-div:hover{
