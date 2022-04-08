@@ -1,3 +1,11 @@
+if (typeof URLSearchParams !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('clientToken')) {
+        localStorage.setItem('clientToken', params.get('clientToken'));
+        window.location.search = "";
+    }
+}
+
 var chatSocket = null;
 var current_page = 1;
 
@@ -86,9 +94,11 @@ if (clientToken == null) {
     clientToken = newToken;
 }
 
-chatSocket = new ReconnectingWebSocket('ws://127.0.0.1:5000/ws/chat/exhibition/?clientToken=' + clientToken);
+chatSocket = new ReconnectingWebSocket('ws://127.0.0.1:8000/ws/chat/exhibition/?clientToken=' + clientToken);
 
 chatSocket.onopen = function(e) {
+    document.getElementById("chat").removeEventListener("scroll", loadNextPage);
+    current_page = 1;
     document.getElementById('room-list').innerHTML = "";
     document.getElementById('chat').innerHTML = "";
     chatSocket.send(JSON.stringify({"command": "list_rooms"}));
