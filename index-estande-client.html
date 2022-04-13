@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/style-estande-client.css">
     </head>
 <body>
-    <div id="room-list" class="icons-div" style="position: absolute;">
+    <div id="room-list" class="icons-div" style="position: absolute; display: none;">
     </div>
     <div id="sidePanel" class="side-panel container-fluid" style="left: 100px;">
         <div class="side-panel-toggle" onclick="toggleChat()"><i class="fas fa-angle-left"></i></div>
@@ -20,7 +20,9 @@
             <input id="picture-input" type="file"/>
             <button id="delete-picture">X</button>
           </div>
-          <input id="local-peer-name" class="col-5 input-group-text type-msg" placeholder="Digite seu nome..." />
+          <input id="local-peer-name" class="col-5 input-group-text type-msg" placeholder="Nome" />
+          <input id="local-peer-email" class="col-5 input-group-text type-msg" placeholder="E-mail" />
+          <input id="local-peer-company" class="col-5 input-group-text type-msg" placeholder="Empresa" />
           <button id="connect-peer" class="col-3 btn btn-primary btn-enter">Entrar</button>
         </div>
         <div id="chat" class="chat row chat-client">

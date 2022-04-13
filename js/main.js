@@ -78,12 +78,27 @@ function toggleReaction(element) {
     }
 }
 
+function showRoomList() {
+    if (document.getElementById('local-peer-name').value != "" && document.getElementById('local-peer-email').value != "" &&
+        document.getElementById('local-peer-company').value != "") {
+        document.getElementById("room-list").style.display = "block";
+        document.getElementById("connect-peer").disabled = true;
+        document.getElementById('local-peer-name').disabled = true;
+        document.getElementById('local-peer-email').disabled = true;
+        document.getElementById('local-peer-company').disabled = true;
+    }
+}
+
+document.getElementById("connect-peer").addEventListener("click", showRoomList);
+
 function connectRoom(element) {
-    if (document.getElementById('local-peer-name').value != "") {
+    if (document.getElementById('local-peer-name').value != "" && document.getElementById('local-peer-email').value != "" &&
+        document.getElementById('local-peer-company').value != "") {
         current_page = 1;
         document.getElementById('chat').innerHTML = "";
         let id = element.dataset.id;
-        chatSocket.send(JSON.stringify({"command": "connect", "room": id, "username": document.getElementById('local-peer-name').value}));
+        chatSocket.send(JSON.stringify({"command": "connect", "room": id, "username": document.getElementById('local-peer-name').value,
+            "email": document.getElementById('local-peer-email').value, "company_name": document.getElementById('local-peer-company').value}));
     }
 }
 
@@ -249,9 +264,16 @@ chatSocket.onmessage = function(e) {
         if (data.username != null) {
             document.getElementById("local-peer-name").value = data.username;
         }
+        if (data.email != null) {
+            document.getElementById("local-peer-email").value = data.email;
+        }
+        if (data.company_name != null) {
+            document.getElementById("local-peer-company").value = data.company_name;
+        }
         if (data.profile_picture != null) {
             document.getElementById("host-picture").style.backgroundImage = "url(" + data.profile_picture + ")";
         }
+        showRoomList();
     }
     else if (data.type == 'chat_connection') {
         // connectionCount++;
