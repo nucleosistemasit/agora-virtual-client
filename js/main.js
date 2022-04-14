@@ -196,6 +196,7 @@ function printRoom(data) {
     let roomNode = document.createElement('div');
     roomNode.classList.add('inner-icons-div');
     roomNode.dataset.id = data.id;
+    roomNode.dataset.name = data.display_name;
     roomNode.setAttribute('onclick', 'connectRoom(this)');
     roomNode.innerHTML = '<div class="inner-icons-div">' +
                             '<img style="width: 75px; height: 75px;" class="inbox-icon" src="' + (data.operator_picture || "") + '">' +
