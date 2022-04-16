@@ -167,7 +167,7 @@ if (clientToken == null) {
     clientToken = newToken;
 }
 
-chatSocket = new ReconnectingWebSocket('ws://127.0.0.1:8000/ws/chat/exhibition/?clientToken=' + clientToken);
+chatSocket = new ReconnectingWebSocket('wss://metaversochat.youbot.us/ws/chat/exhibition/?clientToken=' + clientToken);
 
 chatSocket.onopen = function(e) {
     document.getElementById("chat").removeEventListener("scroll", loadNextPage);
@@ -390,7 +390,7 @@ pictureInput.addEventListener("change", function(event) {
     if (event.target.files && event.target.files[0]) {
         const formData = new FormData();
         formData.append('profile_picture', event.target.files[0]);
-        const url = 'http://127.0.0.1:8000/api/client-picture/' + localStorage.getItem('clientToken') + '/';
+        const url = 'https://metaversochat.youbot.us/api/client-picture/' + localStorage.getItem('clientToken') + '/';
         const options = {
             method: "POST",
             body: formData
@@ -405,7 +405,7 @@ pictureInput.addEventListener("change", function(event) {
 });
 
 deletePicture.addEventListener("click", function() {
-    const url = 'http://127.0.0.1:8000/api/client-picture/' + localStorage.getItem('clientToken') + '/';
+    const url = 'https://metaversochat.youbot.us/api/client-picture/' + localStorage.getItem('clientToken') + '/';
     const options = {
         method: "DELETE",
     };
