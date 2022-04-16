@@ -9,13 +9,13 @@ if (typeof URLSearchParams !== 'undefined') {
 var buildUrl = "Build";
 var loaderUrl = buildUrl + "/ExpoWebGLBuild.loader.js";
 var config = {
-dataUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.data",
-frameworkUrl: buildUrl + "/ExpoWebGLBuild.framework.js",
-codeUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.wasm",
-streamingAssetsUrl: "StreamingAssets",
-companyName: "Núcleo",
-productName: "Metaverso Caxias",
-productVersion: "0.1",
+    dataUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.data",
+    frameworkUrl: buildUrl + "/ExpoWebGLBuild.framework.js",
+    codeUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.wasm",
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "Núcleo",
+    productName: "Metaverso Caxias",
+    productVersion: "0.1",
 };
 
 var container = document.querySelector("#unity-container");
@@ -63,6 +63,7 @@ script.onload = () => {
         alert(message);
     });
 };
+document.body.appendChild(script);
 
 var chatSocket = null;
 var current_page = 1;
