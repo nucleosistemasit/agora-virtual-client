@@ -25,19 +25,24 @@ p {
     /* z-index: 100; */
 }
 .inner-icons-div {
-    border-radius: 50px;
     display: inline-block;
+    border-radius: 50px;
+    width: 80px;
+    height: 80px;
     background-color:rgb(230, 230, 230) ;
     position: initial;
     text-align:center;
     margin-top: 10px;
-    outline: 3px outset rgba(202, 196, 196, 0.116);
     box-shadow: 0 0px 20px rgb(0 0 0 / 20%);
     cursor: pointer;
 }
 
+.inner-icons-div.chat-selected {
+    background-color:rgb(0, 188, 212);
+}
+
 .inner-icons-div:hover {
-    background-color:rgb(0, 188, 212)
+    background-color:rgb(0, 188, 212);
 }
 
 .glyphicon {
@@ -108,6 +113,8 @@ p {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    border-radius: 50%;
+    text-align: center;
 }
 
 .inbox-div{
@@ -220,7 +227,8 @@ p {
 
 #unity-container.unity-desktop {
     height: 100vh;
-    width: 70vw;
+    width: calc(70vw - 100px);
+    position: absolute; 
     right: 0%;
     top: 0%;
     left: initial;
@@ -228,7 +236,7 @@ p {
 }
 
 #unity-canvas {
-    width: 70vw;
+    width: calc(70vw - 100px);
     height: 100vh;
     cursor: default;
 }

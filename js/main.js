@@ -63,11 +63,6 @@ script.onload = () => {
             gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 1);
         });
 
-        document.addEventListener('keyup', function(event) {
-            if (event.key == 'Escape') {
-                gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 0);
-            }
-        });
     }).catch((message) => {
         alert(message);
     });
@@ -166,8 +161,12 @@ function connectRoom(element) {
         document.getElementById('chat').innerHTML = "";
         let id = element.dataset.id;
         chatSocket.send(JSON.stringify({"command": "connect", "room": id, "username": document.getElementById('local-peer-name').value,
-            "email": document.getElementById('local-peer-email').value, "company_name": document.getElementById('local-peer-company').value}));
-    }
+        "email": document.getElementById('local-peer-email').value, "company_name": document.getElementById('local-peer-company').value}));
+        for (let i of document.querySelectorAll(".inner-icons-div")) {
+            i.classList.remove("chat-selected");
+        }
+        element.classList.add("chat-selected");        
+    }    
 }
 
 let clientToken = localStorage.getItem('clientToken');
@@ -266,7 +265,7 @@ function printRoom(data) {
     roomNode.dataset.id = data.id;
     roomNode.dataset.name = data.display_name;
     roomNode.setAttribute('onclick', 'connectRoom(this)');
-    roomNode.innerHTML = '<span id="roomPicture" class="inbox-icon room-picture"></span>';
+    roomNode.innerHTML = '<span id="roomPicture" class="inbox-icon room-picture align-middle"></span>';
     document.getElementById('roomList').appendChild(roomNode);
     document.getElementById("roomPicture").style.backgroundImage = "url(" + data.operator_picture + ")";
 }
