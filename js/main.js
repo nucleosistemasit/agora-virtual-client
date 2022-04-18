@@ -59,6 +59,16 @@ script.onload = () => {
     //           fullscreenButton.onclick = () => {
     //             unityInstance.SetFullscreen(1);
     //           };
+        document.addEventListener('click', function(event) {
+            const withinBoundaries = event.composedPath().includes(container);
+
+            if (withinBoundaries) {
+                gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 1);
+            }
+            else {
+                gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 0);
+            }
+        });
     }).catch((message) => {
         alert(message);
     });
@@ -257,10 +267,7 @@ function printRoom(data) {
     roomNode.dataset.id = data.id;
     roomNode.dataset.name = data.display_name;
     roomNode.setAttribute('onclick', 'connectRoom(this)');
-    roomNode.innerHTML = '<div class="inner-icons-div">' +
-                            '<span id="roomPicture" class="inbox-icon room-picture"' +
-                        '</div>';
-
+    roomNode.innerHTML = '<span id="roomPicture" class="inbox-icon room-picture"></span>';
     document.getElementById('roomList').appendChild(roomNode);
     document.getElementById("roomPicture").style.backgroundImage = "url(" + data.operator_picture + ")";
 }

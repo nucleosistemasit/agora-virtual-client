@@ -101,6 +101,15 @@ p {
     outline-color:  rgb(0, 188, 212)
 }
 
+.room-picture {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .inbox-div{
     width: 35vw;
     height: 87vh;
