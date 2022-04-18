@@ -59,13 +59,12 @@ script.onload = () => {
     //           fullscreenButton.onclick = () => {
     //             unityInstance.SetFullscreen(1);
     //           };
-        document.addEventListener('click', function(event) {
-            const withinBoundaries = event.composedPath().includes(container);
+        container.addEventListener('click', function() {
+            gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 1);
+        });
 
-            if (withinBoundaries) {
-                gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 1);
-            }
-            else {
+        document.addEventListener('keyup', function(event) {
+            if (event.key == 'Escape') {
                 gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 0);
             }
         });
