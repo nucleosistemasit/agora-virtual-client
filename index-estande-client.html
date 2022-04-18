@@ -11,19 +11,24 @@
 <body>
     <div id="room-list" class="icons-div" style="position: absolute; display: none;">
     </div>
-    <div id="sidePanel" class="side-panel container-fluid" style="left: 100px;">
+    <div id="sidePanel" class="side-panel container-fluid">
         <div class="side-panel-toggle" onclick="toggleChat()"><i class="fas fa-angle-left"></i></div>
         <div class="banner row"></div>
-        <div class="row dash-name">  
-          <div class="col-4">
-            <img id="host-picture" width="28px" height="28px">
-            <input id="picture-input" type="file"/>
-            <button id="delete-picture">X</button>
+        <div class="row dash-name"> 
+          <input id="local-peer-name" class="col-3 input-group-text type-msg m-auto" placeholder="Nome..." />
+          <input id="local-peer-email" class="col-3 input-group-text type-msg m-auto" placeholder="E-mail..." />
+          <input id="local-peer-company" class="col-3 input-group-text type-msg m-auto" placeholder="Empresa..." />
+          <div class="col-4 text-center m-auto">
+            <span id="profile-picture" class="profile-picture align-middle">
+                <div id="pictureMenu" class="picture-menu picture-menu-closed col-12">
+                <label for="picture-input" class="picture-input-label">Editar</label>
+                <input id="picture-input" type="file" accept="image/png, image/jpeg, image/jpg"/>
+                <label for="delete-picture" class="picture-delete-label">Excluir</label>
+                <button id="delete-picture" class="delete-picture"></button>
+                </div> 
+            </span>
           </div>
-          <input id="local-peer-name" class="col-5 input-group-text type-msg" placeholder="Nome" />
-          <input id="local-peer-email" class="col-5 input-group-text type-msg" placeholder="E-mail" />
-          <input id="local-peer-company" class="col-5 input-group-text type-msg" placeholder="Empresa" />
-          <button id="connect-peer" class="col-3 btn btn-primary btn-enter">Entrar</button>
+          <button id="connect-peer" class="col-5 btn btn-primary btn-enter">Entrar</button>
         </div>
         <div id="chat" class="chat row chat-client">
           <span class="scroll-to-bottom-btn"><i id="scrollToBottomBtn" class="fas fa-caret-down"></i></span>	

@@ -81,7 +81,7 @@ function toggleReaction(element) {
 function showRoomList() {
     if (document.getElementById('local-peer-name').value != "" && document.getElementById('local-peer-email').value != "" &&
         document.getElementById('local-peer-company').value != "") {
-        document.getElementById("room-list").style.display = "block";
+        document.getElementById("roomList").style.display = "block";
         document.getElementById("connect-peer").disabled = true;
         document.getElementById('local-peer-name').disabled = true;
         document.getElementById('local-peer-email').disabled = true;
@@ -114,7 +114,7 @@ chatSocket = new ReconnectingWebSocket('ws://127.0.0.1:8000/ws/chat/exhibition/?
 chatSocket.onopen = function(e) {
     document.getElementById("chat").removeEventListener("scroll", loadNextPage);
     current_page = 1;
-    document.getElementById('room-list').innerHTML = "";
+    document.getElementById('roomList').innerHTML = "";
     document.getElementById('chat').innerHTML = "";
     chatSocket.send(JSON.stringify({"command": "list_rooms"}));
 };
@@ -199,10 +199,11 @@ function printRoom(data) {
     roomNode.dataset.name = data.display_name;
     roomNode.setAttribute('onclick', 'connectRoom(this)');
     roomNode.innerHTML = '<div class="inner-icons-div">' +
-                            '<img style="width: 75px; height: 75px;" class="inbox-icon" src="' + (data.operator_picture || "") + '">' +
+                            '<span id="roomPicture" class="inbox-icon room-picture"' +
                         '</div>';
 
-    document.getElementById('room-list').appendChild(roomNode);
+    document.getElementById('roomList').appendChild(roomNode);
+    document.getElementById("roomPicture").style.backgroundImage = "url(" + response_json.profile_picture + ")";
 }
 
 chatSocket.onmessage = function(e) {
