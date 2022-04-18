@@ -262,7 +262,7 @@ function printRoom(data) {
                         '</div>';
 
     document.getElementById('roomList').appendChild(roomNode);
-    document.getElementById("roomPicture").style.backgroundImage = "url(" + response_json.profile_picture + ")";
+    document.getElementById("roomPicture").style.backgroundImage = "url(" + data.operator_picture + ")";
 }
 
 chatSocket.onmessage = function(e) {
