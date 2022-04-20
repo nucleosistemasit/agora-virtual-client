@@ -47,6 +47,15 @@ if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
 }
 loadingBar.style.display = "block";
 
+function toggleKeyCapture() {
+    if (document.pointerLockElement === canvas ||
+        document.mozPointerLockElement === canvas) {
+        gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 1);
+    } else {
+        gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 0);
+    }
+}
+
 var gameInstance = null;
 var script = document.createElement("script");
 script.src = loaderUrl;
@@ -59,9 +68,11 @@ script.onload = () => {
     //           fullscreenButton.onclick = () => {
     //             unityInstance.SetFullscreen(1);
     //           };
-        container.addEventListener('click', function() {
-            gameInstance.SendMessage('FirstPersonPlayer', 'SetKeyboard', 1);
-        });
+        if ("onpointerlockchange" in document) {
+            document.addEventListener('pointerlockchange', toggleKeyCapture, false);
+        } else if ("onmozpointerlockchange" in document) {
+            document.addEventListener('mozpointerlockchange', toggleKeyCapture, false);
+        }
 
     }).catch((message) => {
         alert(message);
