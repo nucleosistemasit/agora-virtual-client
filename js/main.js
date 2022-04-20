@@ -6,7 +6,7 @@ if (typeof URLSearchParams !== 'undefined') {
     }
 }
 
-Mousetrap.bind('esc', function() { console.log('escape'); }, 'keyup');
+jwerty.key('esc', function(e) { console.log('escape'); });
 
 var buildUrl = "Build";
 var loaderUrl = buildUrl + "/ExpoWebGLBuild.loader.js";
