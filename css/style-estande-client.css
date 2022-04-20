@@ -417,10 +417,16 @@ audio {
 }
 
 .dash-name .btn-enter {
+    color: white;
+    background-color: #69aab5;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px !important;
+}
+
+.dash-name .btn-enter[disabled] {
     color: #5c5c5c;
     background-color: #e3e3e3;
-    border: none;
-    border-radius: 0;
 }
 
 .dash-container {
