@@ -9,9 +9,9 @@ if (typeof URLSearchParams !== 'undefined') {
 var buildUrl = "Build";
 var loaderUrl = buildUrl + "/ExpoGLBuildBrotli.loader.js";
 var config = {
-    dataUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.data.br",
+    dataUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuildBrotli.data.br",
     frameworkUrl: buildUrl + "/ExpoGLBuildBrotli.framework.js.br",
-    codeUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.wasm.br",
+    codeUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuildBrotli.wasm.br",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Núcleo",
     productName: "Metaverso Caxias",
