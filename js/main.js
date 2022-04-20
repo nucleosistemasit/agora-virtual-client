@@ -10,7 +10,7 @@ var buildUrl = "Build";
 var loaderUrl = buildUrl + "/ExpoGLBuildBrotli.loader.js";
 var config = {
     dataUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuildBrotli.data.br",
-    frameworkUrl:  build + "/ExpoWebGLBuild.framework.js",
+    frameworkUrl:  buildUrl + "/ExpoWebGLBuild.framework.js",
     codeUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuildBrotli.wasm.br",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Núcleo",
