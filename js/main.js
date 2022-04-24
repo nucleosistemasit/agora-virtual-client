@@ -409,7 +409,7 @@ const deletePicture = document.getElementById("delete-picture");
 const fileMessage = document.getElementById("file-message");
 
 fileMessage.addEventListener("change", function(event) {
-    if (event.target.files && event.target.files[0]) {
+    if (event.target.files && event.target.files[0] && document.querySelector(".inner-icons-div.chat-selected") != null) {
         const formData = new FormData();
         formData.append('attachment', event.target.files[0]);
         formData.append('room', document.querySelector(".inner-icons-div.chat-selected").dataset.id);
