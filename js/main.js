@@ -242,7 +242,7 @@ function printMessage (data, messageBlock, scrollToBottom) {
             }
             reactionNode += '<span class="reaction ' + reaction_sent + ' ' + reaction_visible + '" data-reaction="' + reaction_type + '" onclick="toggleReaction(this)">' + reaction_emojis[parseInt(reaction_type) - 1] + '<span class="react-quantity">' + reaction_quantity + '</span></span>';
         }
-
+        // TODO: add "data.attachment" URL
         peerNode.innerHTML = '<p class="p-messaged-chat"><strong class="s-messaged-chat">' + 
                                 escapeHtml(data.username) + 
                                 '</strong> ' + 
@@ -291,7 +291,7 @@ chatSocket.onmessage = function(e) {
     }
     else if (data.type == 'chat_notification') {
         if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null) {
-            // Notification
+            // TODO: Add notification to room
         }
     }
     else if (data.type == 'chat_message') {
@@ -308,6 +308,10 @@ chatSocket.onmessage = function(e) {
         current_page++;
         if (data.has_next_page) {
             setInfiniteScroll();
+        }
+        if (data.connections == 1) {
+            // TODO: show offline message
+            console.log(data.offline_message)
         }
     }
     else if (data.type == 'chat_reaction') {
@@ -402,6 +406,22 @@ document.getElementById('message-content').addEventListener('keyup', function(e)
 
 const pictureInput = document.getElementById("picture-input");
 const deletePicture = document.getElementById("delete-picture");
+const fileMessage = document.getElementById("file-message");
+
+fileMessage.addEventListener("change", function(event) {
+    if (event.target.files && event.target.files[0]) {
+        const formData = new FormData();
+        formData.append('attachment', event.target.files[0]);
+        formData.append('room', document.querySelector(".inner-icons-div.chat-selected").dataset.id);
+        const url = 'https://metaversochat.youbot.us/api/client-file-upload/' + localStorage.getItem('clientToken') + '/';
+        const options = {
+            method: "POST",
+            body: formData
+        };
+        fetch(url, options)
+            .then( res => event.target.value = "" );
+    }
+});
 
 pictureInput.addEventListener("change", function(event) {
     if (event.target.files && event.target.files[0]) {
