@@ -276,9 +276,8 @@ function printRoom(data) {
     roomNode.dataset.id = data.id;
     roomNode.dataset.name = data.display_name;
     roomNode.setAttribute('onclick', 'connectRoom(this)');
-    roomNode.innerHTML = '<span id="roomPicture" class="inbox-icon room-picture align-middle"></span>';
+    roomNode.innerHTML = '<span class="inbox-icon room-picture align-middle" style="background-image: url(' + data.operator_picture + ')"></span>';
     document.getElementById('roomList').appendChild(roomNode);
-    document.getElementById("roomPicture").style.backgroundImage = "url(" + data.operator_picture + ")";
 }
 
 chatSocket.onmessage = function(e) {
