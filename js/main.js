@@ -302,6 +302,9 @@ chatSocket.onmessage = function(e) {
         let messageBlock = document.createElement('div');
         messageBlock.classList.add("message-block");
         document.getElementById('chat').prepend(messageBlock);
+        if (data.messages.length == 0 && current_page == 1) {
+            chatSocket.send(JSON.stringify({"command": "chat", "content": document.getElementById("local-peer-name").value + " entrou no chat."}));
+        }
         for (message of data.messages) {
             printMessage(message, messageBlock, false);
         }

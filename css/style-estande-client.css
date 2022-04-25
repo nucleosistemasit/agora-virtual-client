@@ -377,6 +377,7 @@ audio {
     background-color: #e3e3e3;
     cursor: pointer;
     display: block;
+    margin-bottom: 0;
 }
 
 .picture-input-label:hover,
@@ -402,7 +403,7 @@ audio {
     background-repeat: no-repeat;
 }
 
-.profile-picture:hover::before {
+/* .profile-picture:hover::before {
     content: "\f303";
     color: white;
     font-family: FontAwesome;
@@ -411,7 +412,7 @@ audio {
     position: relative;
     top: 1px;
     left: 0px;
-}
+} */
 
 .dash-name .type-msg {
     background: none;
