@@ -215,14 +215,14 @@ function printMessage (data, messageBlock, scrollToBottom) {
         }
         peerNode.classList.add('msg-container');
         let messageMenu = '<span id="messageMenu" class="msg-menu">' +
-                                '<span id="replyMenu-' + data.id + '" class="menu-reply" onclick="sendReply(this)">⬅</span>' +      
+                                '<span id="replyMenu-' + data.id + '" class="menu-reply" onclick="sendReply(this)"><i class="fa-solid fa-reply"></i></span>' +
                                 '<span id="reactionMenu-' + data.id + '" class="menu-reactions">' +
-                                '<span class="reaction-menu" data-reaction="1" onclick="toggleReaction(this)">👍</span>' +
-                                '<span class="reaction-menu" data-reaction="2" onclick="toggleReaction(this)">👏</span>' +
-                                '<span class="reaction-menu" data-reaction="3" onclick="toggleReaction(this)">❤</span>' +
-                                '<span class="reaction-menu" data-reaction="4" onclick="toggleReaction(this)">🙌</span>' +
-                                '<span class="reaction-menu" data-reaction="5" onclick="toggleReaction(this)">😮</span>' +
-                                '<span class="reaction-menu" data-reaction="6" onclick="toggleReaction(this)">🤣</span>' +
+                                '<span class="reaction" data-reaction="1" onclick="toggleReaction(this)">👍</span>' +
+                                '<span class="reaction" data-reaction="2" onclick="toggleReaction(this)">👏</span>' +
+                                '<span class="reaction" data-reaction="3" onclick="toggleReaction(this)">💗</span>' +
+                                '<span class="reaction" data-reaction="4" onclick="toggleReaction(this)">🙌</span>' +
+                                '<span class="reaction" data-reaction="5" onclick="toggleReaction(this)">😮</span>' +
+                                '<span class="reaction" data-reaction="6" onclick="toggleReaction(this)">🤣</span>' +
                                 '</span>' +
                             '</span>';
         let reactionNode = '';

@@ -22,6 +22,7 @@ p {
     background-color: #f8f8f8;
     text-align: center;
     overflow-y: auto;
+    padding-top: 20px;
     /* z-index: 100; */
 }
 .inner-icons-div {
@@ -29,20 +30,22 @@ p {
     border-radius: 50px;
     width: 80px;
     height: 80px;
-    background-color:rgb(230, 230, 230) ;
+    background-color: rgb(230, 230, 230);
     position: initial;
-    text-align:center;
-    margin-top: 10px;
+    padding: 5px;
+    text-align: center;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
     box-shadow: 0 0px 20px rgb(0 0 0 / 20%);
     cursor: pointer;
 }
 
 .inner-icons-div.chat-selected {
-    background-color:rgb(0, 188, 212);
+    background-color:#69aab5;
 }
 
 .inner-icons-div:hover {
-    background-color:rgb(0, 188, 212);
+    background-color:#c3f1e1;
 }
 
 .glyphicon {
@@ -107,9 +110,9 @@ p {
 }
 
 .room-picture {
-    display: inline-block;
-    width: 75px;
-    height: 75px;
+display: inline-block;
+    width: 70px;
+    height: 70px;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -529,19 +532,25 @@ audio {
 }
 
 .chat .mod-msg {
-    padding: 10px 0 10px 12px;
-    border-left: 5px solid #69dfb6;
-    background-color: #c3f1e1;
+    padding: 10px 0 10px 12px;     
     margin-left: 3px;
     border-radius: 5px;
 }
 
 .chat .mod-msg .p-messaged-chat {
-    background-color: white;
+    background-color: #c3f1e1;
+    float: right;
+    margin-right: 55px;
+    color: #101010;
 }
 
 .chat .mod-msg .p-messaged-chat::before {
-    border-color: white transparent transparent transparent;
+    border-color: #c3f1e1 transparent transparent transparent;
+}
+
+.chat .mod-msg .p-messaged-chat .msg-menu {
+    bottom: -15px;
+    left: -35px;
 }
 
 .message-block {
@@ -641,43 +650,55 @@ audio {
 .p-messaged-chat:hover .msg-menu {
     position: absolute;
     display: inline-block;
-    width: 60px;
-    height: 25px;
-    right: -30px;
+    width: 40px;
+    height: 80px;
+    right: -35px;
     bottom: -10px;
     background-color: #e3e3e3;
     border-radius: 5px;
 }
 
-.msg-menu .menu-reply {
-    position: absolute;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    left: 5px;
+.msg-menu .menu-reply {   
+    display: block;
+    width: 40px;
+    height: 40px;
+    left: 0px;
+    font-size: 18pt;
     cursor: pointer;
+    text-align: center;
 }
 
 .msg-menu .menu-reactions {
     position: absolute;
     display: inline-block;
-    width: 25px;
-    height: 25px;
-    left: 30px;
+    width: 40px;
+    height: 40px;
+    left: 0;
     background-color: #e3e3e3;
     border-radius: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
     scroll-behavior: 25px;
     cursor: pointer;
+    text-align: center;
 }
 
 .p-messaged-chat:hover .menu-reactions:hover {
-    height: 125px;
-    width: 30px;
-    padding: 5px 0;
-    top: -55px;
+    height: 40px;
+    width: 200px;
+    padding: 0px 0;
+    /* padding-bottom: 8px; */
+    top: 40px;
+    left: -80px;
     text-align: center;
+}
+
+.menu-reactions .reaction {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 18pt;
 }
 
 .menu-reactions:hover .reaction {
@@ -686,13 +707,6 @@ audio {
 
 .menu-reactions::-webkit-scrollbar {
    width: 0;
-}
-
-.menu-reactions .reaction {
-    position: relative;
-    width: 25px;
-    height: 25px;
-    text-align: center;
 }
 
 .reply-chat {    
