@@ -421,6 +421,9 @@ fileMessage.addEventListener("change", function(event) {
         fetch(url, options)
             .then( res => event.target.value = "" );
     }
+    else {
+        event.target.value = "";
+    }
 });
 
 pictureInput.addEventListener("change", function(event) {

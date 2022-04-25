@@ -85,7 +85,7 @@ p {
     color: rgba(163, 163, 163, 0.363);
 }
 
-.search-bar-div{
+.search-bar-div {
     width: 35vw;
     height: 13vh;
     min-height: 5vh;
@@ -93,7 +93,7 @@ p {
     background-color: rgb(240, 240, 240);
 }
 
-.input-field{
+.input-field {
     width: 28vw;
     border: 13px solid rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
@@ -104,13 +104,13 @@ p {
     transform: translate(-50%, -50%);
     text-indent: 30px;
 }
-.input-field:focus{
+.input-field:focus {
     outline-width: 10ch;
     outline-color:  rgb(0, 188, 212)
 }
 
 .room-picture {
-display: inline-block;
+    display: inline-block;
     width: 70px;
     height: 70px;
     background-position: center;
@@ -454,8 +454,9 @@ audio {
 .chat p {
     position: relative;
     display: block;
-    float: left;
+    float: right;
     min-height: 35px;
+    margin-right: 55px;
     height: auto;
     width: auto;
     padding: 5px 10px;
@@ -539,18 +540,13 @@ audio {
 
 .chat .mod-msg .p-messaged-chat {
     background-color: #c3f1e1;
-    float: right;
+    float: left;
     margin-right: 55px;
     color: #101010;
 }
 
 .chat .mod-msg .p-messaged-chat::before {
     border-color: #c3f1e1 transparent transparent transparent;
-}
-
-.chat .mod-msg .p-messaged-chat .msg-menu {
-    bottom: -15px;
-    left: -35px;
 }
 
 .message-block {
@@ -647,12 +643,28 @@ audio {
     display: none;
 }
 
+.chat .mod-msg .p-messaged-chat .msg-menu {
+    display: none;
+}
+
 .p-messaged-chat:hover .msg-menu {
     position: absolute;
     display: inline-block;
     width: 40px;
     height: 80px;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    bottom: -15px;
+    left: -35px;
+}
+
+.mod-msg .p-messaged-chat:hover .msg-menu {
+    position: absolute;
+    display: inline-block;
+    width: 40px;
+    height: 80px;
     right: -35px;
+    left: initial;
     bottom: -10px;
     background-color: #e3e3e3;
     border-radius: 5px;
@@ -844,8 +856,9 @@ audio {
     transition: scale 0.5s, color 0.3s;
 }
 
-
-.fas:hover, .svg-inline--fa:hover {
+.fas:hover, 
+.svg-inline--fa:hover,
+.btn:hover .svg-inline--fa {
     color: #69dfb6;
     transition: scale 0.5s, color 0.3s;
 }
@@ -866,4 +879,17 @@ audio {
 .btn-send-msg:hover .fas {
     color: #69dfb6;
     transition: color 0.3s;
+}
+
+input.input-send-file {
+    display: none;
+}
+
+.send-file {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    z-index: 1;   
+    line-height: 3; 
 }
