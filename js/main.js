@@ -7,11 +7,11 @@ if (typeof URLSearchParams !== 'undefined') {
 }
 
 var buildUrl = "Build";
-var loaderUrl = buildUrl + "/ExpoWebGLBuild.loader.js";
+var loaderUrl = buildUrl + "/ExpoGLBuildBrotli.loader.js";
 var config = {
-    dataUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.data",
-    frameworkUrl: buildUrl + "/ExpoWebGLBuild.framework.js",
-    codeUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuild.wasm",
+    dataUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuildBrotli.data.br",
+    frameworkUrl:  "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoGLBuildBrotli.framework.js.br",
+    codeUrl: "https://agoravirtual-bucket.s3.us-west-2.amazonaws.com/ExpoWebGLBuildBrotli.wasm.br",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Núcleo",
     productName: "Metaverso Caxias",
@@ -242,7 +242,7 @@ function printMessage (data, messageBlock, scrollToBottom) {
             }
             reactionNode += '<span class="reaction ' + reaction_sent + ' ' + reaction_visible + '" data-reaction="' + reaction_type + '" onclick="toggleReaction(this)">' + reaction_emojis[parseInt(reaction_type) - 1] + '<span class="react-quantity">' + reaction_quantity + '</span></span>';
         }
-
+        // TODO: add "data.attachment" URL
         peerNode.innerHTML = '<p class="p-messaged-chat"><strong class="s-messaged-chat">' + 
                                 escapeHtml(data.username) + 
                                 '</strong> ' + 
@@ -276,9 +276,8 @@ function printRoom(data) {
     roomNode.dataset.id = data.id;
     roomNode.dataset.name = data.display_name;
     roomNode.setAttribute('onclick', 'connectRoom(this)');
-    roomNode.innerHTML = '<span id="roomPicture" class="inbox-icon room-picture align-middle"></span>';
+    roomNode.innerHTML = '<span class="inbox-icon room-picture align-middle" style="background-image: url(' + data.operator_picture + ')"></span>';
     document.getElementById('roomList').appendChild(roomNode);
-    document.getElementById("roomPicture").style.backgroundImage = "url(" + data.operator_picture + ")";
 }
 
 chatSocket.onmessage = function(e) {
@@ -292,7 +291,7 @@ chatSocket.onmessage = function(e) {
     }
     else if (data.type == 'chat_notification') {
         if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null) {
-            // Notification
+            // TODO: Add notification to room
         }
     }
     else if (data.type == 'chat_message') {
@@ -309,6 +308,10 @@ chatSocket.onmessage = function(e) {
         current_page++;
         if (data.has_next_page) {
             setInfiniteScroll();
+        }
+        if (data.connections == 1) {
+            // TODO: show offline message
+            console.log(data.offline_message)
         }
     }
     else if (data.type == 'chat_reaction') {
@@ -403,6 +406,22 @@ document.getElementById('message-content').addEventListener('keyup', function(e)
 
 const pictureInput = document.getElementById("picture-input");
 const deletePicture = document.getElementById("delete-picture");
+const fileMessage = document.getElementById("file-message");
+
+fileMessage.addEventListener("change", function(event) {
+    if (event.target.files && event.target.files[0] && document.querySelector(".inner-icons-div.chat-selected") != null) {
+        const formData = new FormData();
+        formData.append('attachment', event.target.files[0]);
+        formData.append('room', document.querySelector(".inner-icons-div.chat-selected").dataset.id);
+        const url = 'https://metaversochat.youbot.us/api/client-file-upload/' + localStorage.getItem('clientToken') + '/';
+        const options = {
+            method: "POST",
+            body: formData
+        };
+        fetch(url, options)
+            .then( res => event.target.value = "" );
+    }
+});
 
 pictureInput.addEventListener("change", function(event) {
     if (event.target.files && event.target.files[0]) {
