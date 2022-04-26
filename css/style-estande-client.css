@@ -934,3 +934,25 @@ input.input-send-file {
     color: white;
     margin-top: 10px;
 }
+
+.offline-msg,
+.offline-link {
+    display: none;
+    position: relative;
+    bottom: 100px;    
+}
+
+.show-offline-msg {
+    display: inline;
+}
+
+.download-attachment {
+    font-size: 22pt;
+    margin-left: 10px;
+    vertical-align: middle;
+    z-index: 999;
+}
+
+.show-notification {
+    
+}

@@ -168,6 +168,8 @@ document.getElementById("connect-peer").addEventListener("click", showRoomList);
 function connectRoom(element) {
     if (document.getElementById('local-peer-name').value != "" && document.getElementById('local-peer-email').value != "" &&
         document.getElementById('local-peer-company').value != "") {
+        document.getElementById("sidePanel").classList.remove("side-panel-closed");
+        document.getElementById("roomList").classList.remove("side-panel-closed");
         current_page = 1;
         document.getElementById('chat').innerHTML = "";
         let id = element.dataset.id;
@@ -176,7 +178,8 @@ function connectRoom(element) {
         for (let i of document.querySelectorAll(".inner-icons-div")) {
             i.classList.remove("chat-selected");
         }
-        element.classList.add("chat-selected");        
+        element.classList.add("chat-selected");
+        element.scrollIntoView();    
     }    
 }
 
@@ -242,18 +245,18 @@ function printMessage (data, messageBlock, scrollToBottom) {
             }
             reactionNode += '<span class="reaction ' + reaction_sent + ' ' + reaction_visible + '" data-reaction="' + reaction_type + '" onclick="toggleReaction(this)">' + reaction_emojis[parseInt(reaction_type) - 1] + '<span class="react-quantity">' + reaction_quantity + '</span></span>';
         }
-        // TODO: add "data.attachment" URL
         peerNode.innerHTML = '<p class="p-messaged-chat"><strong class="s-messaged-chat">' + 
                                 escapeHtml(data.username) + 
                                 '</strong> ' + 
-                                messageReply +
+                                messageReply +                                
                                 '<span class="msg-content">' + linkifyHtml(escapeHtml(data.content), {target: '_blank'}) + '</span>' +
+                                ((data.attachment != null) ? "<a href='"+ data.attachment +"' class='download-attachment' target='_blank'><i class='fa-solid fa-file-arrow-down'></i></a>" : "") +
                                 '<span class="msg-reactions">' +
                                 reactionNode +                                        
                                 '</span>' +
                                 '<span class="msg-timestamp">' +
                                 data.created_at +
-                                '</span>' +
+                                '</span>' +                                
                                 messageMenu +
                                 '</p>' +
                               '</span>';
@@ -289,9 +292,12 @@ chatSocket.onmessage = function(e) {
             printRoom(room);
         }
     }
+    //TODO
     else if (data.type == 'chat_notification') {
+        console.log(data);
         if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null) {
-            // TODO: Add notification to room
+            let notification = document.querySelector('.inner-icons-div[data-id="' + data.id + '"]');
+            notification.classList.add("show-notification");
         }
     }
     else if (data.type == 'chat_message') {
@@ -313,8 +319,20 @@ chatSocket.onmessage = function(e) {
             setInfiniteScroll();
         }
         if (data.connections == 1) {
-            // TODO: show offline message
-            console.log(data.offline_message)
+            let offlineMsg = document.getElementById('offlineMsg');
+            let offlineLink = document.getElementById('offlineLink');
+            offlineLink.href = data.offline_message;
+            offlineLink.innerHTML = data.offline_message;
+            offlineMsg.classList.remove('hide');
+            offlineMsg.classList.add('show-offline-msg');
+            offlineLink.classList.remove('hide');
+            offlineLink.classList.add('show-offline-msg');
+        }
+        else {
+            offlineMsg.classList.remove('show-offline-msg');
+            offlineMsg.classList.add('hide');
+            offlineLink.classList.remove('show-offline-msg');
+            offlineLink.classList.add('hide');
         }
     }
     else if (data.type == 'chat_reaction') {

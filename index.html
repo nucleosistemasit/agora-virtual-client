@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/style-estande-client.css">
     </head>
 <body>
-    <div id="roomList" class="icons-div">
+    <div id="roomList" class="icons-div" style=" display: none;">
     </div>
     <div id="sidePanel" class="side-panel container-fluid">
         <div class="side-panel-toggle" onclick="toggleChat()"><i class="fas fa-angle-left"></i></div>
@@ -32,8 +32,8 @@
           <button id="connect-peer" class="col-5 btn btn-primary btn-enter m-auto">Entrar</button>
         </div>
         <div id="chat" class="chat row chat-client">
-          <span class="scroll-to-bottom-btn"><i id="scrollToBottomBtn" class="fas fa-caret-down"></i></span>	
         </div>
+        <span class="scroll-to-bottom-btn"><i id="scrollToBottomBtn" class="fas fa-caret-down"></i></span>
         <div id="replyPreview" class="reply-preview reply-off" data-id="">
           <strong id="sReplyChat" class="s-reply-chat"></strong>
           <span class="reply-close"><i class="fas fa-close" onclick="closeReply()"></i></span>
@@ -46,12 +46,14 @@
           <input type="file" id="file-message" class="input-send-file"/>
           <button id="send-message" class="col-2 btn btn-send-msg"><i class="fas fa-paper-plane"></i></button>
         </div>
+        <span id="offlineMsg" class="offline-msg">Nossos atendentes não estão disponíveis no momento, confira as nossas soluções no link abaixo: </span>
+        <a href="" id="offlineLink" class="offline-link"></a>
     </div>
     <div id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas"></canvas>
         <div id="unity-loading-bar">
-          <div id="unity-logo"></div>          
-            <span class="unity-loading">Carregando...</span>         
+          <!-- <div id="unity-logo"></div>           -->
+            <!-- <span class="unity-loading">Carregando...</span>          -->
         </div>
         <div id="unity-mobile-warning">
           WebGL builds are not supported on mobile devices.
@@ -68,6 +70,23 @@
     <script defer src="js/fontawesome/all.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script> 
-    <script src="js/js.js"></script>    
+    <script src="js/js.js"></script>  
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '347144999291325');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=347144999291325&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->  
 </body>
 </html>
