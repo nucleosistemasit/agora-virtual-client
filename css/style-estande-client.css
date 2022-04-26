@@ -23,8 +23,32 @@ p {
     text-align: center;
     overflow-y: auto;
     padding-top: 20px;
-    /* z-index: 100; */
+    z-index: 100;
+    left: 0px;
+    transition: left 0.8s cubic-bezier(0, 0, 0, 1);
 }
+
+/* width */
+.icons-div::-webkit-scrollbar {
+    width: 10px;
+    right: 0px;
+}
+
+/* Track */
+.icons-div::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.icons-div::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.icons-div::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .inner-icons-div {
     display: inline-block;
     border-radius: 50px;
@@ -46,6 +70,11 @@ p {
 
 .inner-icons-div:hover {
     background-color:#c3f1e1;
+}
+
+.icons-div.side-panel-closed {
+    left: -30vw;
+    transition: left 0.8s cubic-bezier(0, 0, 0, 1);
 }
 
 .glyphicon {
@@ -236,12 +265,14 @@ p {
     top: 0%;
     left: initial;
     transform: translate(0%, 0%);
+    transition: width 0.8s cubic-bezier(0, 0, 0, 1);
 }
 
 #unity-canvas {
     width: calc(70vw - 100px);
     height: 100vh;
     cursor: default;
+    transition: width 0.8s cubic-bezier(0, 0, 0, 1);
 }
 
 #unity-footer {
@@ -287,6 +318,7 @@ p {
 
 .side-panel-closed {
     left: -30vw;
+    transition: left 0.8s cubic-bezier(0, 0, 0, 1);
     /* width: 0vw; */
 }
 
@@ -443,7 +475,7 @@ audio {
 
 .chat.chat-client {
     display: inline-block;
-    height: calc(100% - 230px);
+    height: calc(100% - 260px);
     width: calc(100% + 30px);
     padding-bottom: 30px;
     padding-top: 20px;
@@ -893,4 +925,11 @@ input.input-send-file {
     cursor: pointer;
     z-index: 1;   
     line-height: 3; 
+}
+
+.unity-loading {
+    display: block;
+    font-size: 18pt;
+    color: white;
+    margin-top: 10px;
 }

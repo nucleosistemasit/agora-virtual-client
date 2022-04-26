@@ -5,10 +5,12 @@
 function toggleChat () {
 
   var chat = document.getElementById("sidePanel");
+  var chatSelection = document.getElementById("roomList");
   var unityContainer = document.getElementById("unity-container");
   var unityCanvas = document.getElementById("unity-canvas");
 
-  chat.classList.toggle("side-panel-closed"); 
+  chat.classList.toggle("side-panel-closed");
+  chatSelection.classList.toggle("side-panel-closed");
   unityContainer.classList.toggle("unity-fullscreen"); 
   unityCanvas.classList.toggle("unity-fullscreen"); 
 }
