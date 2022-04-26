@@ -21,8 +21,8 @@ var config = {
 var container = document.querySelector("#unity-container");
 var canvas = document.querySelector("#unity-canvas");
 var loadingBar = document.querySelector("#unity-loading-bar");
-var progressBarFull = document.querySelector("#unity-progress-bar-full");
-var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+// var progressBarFull = document.querySelector("#unity-progress-bar-full");
+// var fullscreenButton = document.querySelector("#unity-fullscreen-button");
 var mobileWarning = document.querySelector("#unity-mobile-warning");
 
 // By default Unity keeps WebGL canvas render target size matched with
@@ -61,7 +61,7 @@ var script = document.createElement("script");
 script.src = loaderUrl;
 script.onload = () => {
     createUnityInstance(canvas, config, (progress) => {
-        progressBarFull.style.width = 100 * progress + "%";
+        // progressBarFull.style.width = 100 * progress + "%";
     }).then((unityInstance) => {
         gameInstance = unityInstance;
         loadingBar.style.display = "none";
@@ -454,6 +454,6 @@ deletePicture.addEventListener("click", function() {
     };
     fetch(url, options)
         .then( res => {
-            document.getElementById("profile-picture").style.backgroundImage = "";
+            document.getElementById("profile-picture").style.backgroundImage = "../img/default_pic.jpg";
         });
 });
