@@ -937,9 +937,7 @@ input.input-send-file {
 
 .offline-msg,
 .offline-link {
-    display: none;
-    position: relative;
-    bottom: 100px;    
+    display: none;   
 }
 
 .show-offline-msg {
