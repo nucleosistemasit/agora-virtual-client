@@ -181,6 +181,7 @@ function connectRoom(element) {
             i.classList.remove("chat-selected");
         }
         element.classList.add("chat-selected");
+        element.classList.remove("show-notification");
         element.scrollIntoView();    
     }    
 }
@@ -294,10 +295,8 @@ chatSocket.onmessage = function(e) {
             printRoom(room);
         }
     }
-    //TODO
     else if (data.type == 'chat_notification') {
-        console.log(data);
-        if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null) {
+        if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null && data.from_me == false) {
             let notification = document.querySelector('.inner-icons-div[data-id="' + data.id + '"]');
             notification.classList.add("show-notification");
         }
