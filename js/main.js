@@ -326,6 +326,7 @@ chatSocket.onmessage = function(e) {
             offlineLink.href = data.offline_message;
             offlineLink.innerHTML = data.offline_message;
             offlineBox.classList.add('show');
+            offlineBox.classList.remove('hide');
             offlineMsg.classList.remove('hide');
             offlineMsg.classList.add('show-offline-msg');
             offlineLink.classList.remove('hide');
@@ -333,6 +334,7 @@ chatSocket.onmessage = function(e) {
         }
         else {
             offlineBox.classList.add('hide');
+            offlineBox.classList.remove('show');
             offlineMsg.classList.remove('show-offline-msg');
             offlineMsg.classList.add('hide');
             offlineLink.classList.remove('show-offline-msg');
