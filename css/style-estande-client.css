@@ -956,3 +956,12 @@ input.input-send-file {
 .show-notification {
     
 }
+
+.offline-msg-box {
+    display: block;
+    position: relative;
+    bottom: 100px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
