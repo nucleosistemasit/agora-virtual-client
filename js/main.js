@@ -320,16 +320,19 @@ chatSocket.onmessage = function(e) {
             setInfiniteScroll();
         }
         if (data.connections == 1) {
+            let offlineBox = document.getElementById('offlineBox');
             let offlineMsg = document.getElementById('offlineMsg');
             let offlineLink = document.getElementById('offlineLink');
             offlineLink.href = data.offline_message;
             offlineLink.innerHTML = data.offline_message;
+            offlineBox.classList.add('show');
             offlineMsg.classList.remove('hide');
             offlineMsg.classList.add('show-offline-msg');
             offlineLink.classList.remove('hide');
             offlineLink.classList.add('show-offline-msg');
         }
         else {
+            offlineBox.classList.add('hide');
             offlineMsg.classList.remove('show-offline-msg');
             offlineMsg.classList.add('hide');
             offlineLink.classList.remove('show-offline-msg');
