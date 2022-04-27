@@ -959,7 +959,7 @@ input.input-send-file {
     display: block;
     position: relative;
     bottom: 100px;
-    background-color: white;
-    border-radius: 5px;
-    padding: 5px;
+    background-color: #ededed;
+    border-radius: 10px;
+    padding: 13px;
 }
