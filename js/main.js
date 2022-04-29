@@ -299,6 +299,8 @@ chatSocket.onmessage = function(e) {
         if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null && data.from_me == false) {
             let notification = document.querySelector('.inner-icons-div[data-id="' + data.id + '"]');
             notification.classList.add("show-notification");
+            var audio = new Audio('./audio/sound_1.wav');
+            audio.play();
         }
     }
     else if (data.type == 'chat_message') {
