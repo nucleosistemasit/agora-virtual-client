@@ -170,6 +170,8 @@ function connectRoom(element) {
         document.getElementById('local-peer-company').value != "") {
         document.getElementById("sidePanel").classList.remove("side-panel-closed");
         document.getElementById("roomList").classList.remove("side-panel-closed");
+        document.getElementById("unity-container").classList.remove("unity-fullscreen");
+        document.getElementById("unity-canvas").classList.remove("unity-fullscreen");
         current_page = 1;
         document.getElementById('chat').innerHTML = "";
         let id = element.dataset.id;
