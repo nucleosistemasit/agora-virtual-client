@@ -181,6 +181,7 @@ function connectRoom(element) {
             i.classList.remove("chat-selected");
         }
         element.classList.add("chat-selected");
+        element.classList.remove("show-notification");
         element.scrollIntoView();    
     }    
 }
@@ -294,12 +295,12 @@ chatSocket.onmessage = function(e) {
             printRoom(room);
         }
     }
-    //TODO
     else if (data.type == 'chat_notification') {
-        console.log(data);
-        if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null) {
+        if (document.querySelector('.inner-icons-div[data-id="' + data.id + '"]') != null && data.from_me == false) {
             let notification = document.querySelector('.inner-icons-div[data-id="' + data.id + '"]');
             notification.classList.add("show-notification");
+            var audio = new Audio('./audio/sound_1.wav');
+            audio.play();
         }
     }
     else if (data.type == 'chat_message') {
@@ -321,16 +322,21 @@ chatSocket.onmessage = function(e) {
             setInfiniteScroll();
         }
         if (data.connections == 1) {
+            let offlineBox = document.getElementById('offlineBox');
             let offlineMsg = document.getElementById('offlineMsg');
             let offlineLink = document.getElementById('offlineLink');
             offlineLink.href = data.offline_message;
             offlineLink.innerHTML = data.offline_message;
+            offlineBox.classList.add('show');
+            offlineBox.classList.remove('hide');
             offlineMsg.classList.remove('hide');
             offlineMsg.classList.add('show-offline-msg');
             offlineLink.classList.remove('hide');
             offlineLink.classList.add('show-offline-msg');
         }
         else {
+            offlineBox.classList.add('hide');
+            offlineBox.classList.remove('show');
             offlineMsg.classList.remove('show-offline-msg');
             offlineMsg.classList.add('hide');
             offlineLink.classList.remove('show-offline-msg');

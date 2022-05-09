@@ -62,14 +62,25 @@ p {
     margin-bottom: 10px;
     box-shadow: 0 0px 20px rgb(0 0 0 / 20%);
     cursor: pointer;
+    transition: background 0.2s, border-radius 0.2s;
+}
+
+.inner-icons-div.show-notification {
+    background-color: #e17474;
+    border-radius: 15px;
+    transition: background 0.2s, border-radius 0.2s;
 }
 
 .inner-icons-div.chat-selected {
     background-color:#69aab5;
+    border-radius: 50px;
+    transition: background 0.2s, border-radius 0.2s;
 }
 
 .inner-icons-div:hover {
     background-color:#c3f1e1;
+    border-radius: 50px;
+    transition: background 0.2s, border-radius 0.2s;
 }
 
 .icons-div.side-panel-closed {
@@ -937,9 +948,7 @@ input.input-send-file {
 
 .offline-msg,
 .offline-link {
-    display: none;
-    position: relative;
-    bottom: 100px;    
+    display: none;   
 }
 
 .show-offline-msg {
@@ -955,4 +964,13 @@ input.input-send-file {
 
 .show-notification {
     
+}
+
+.offline-msg-box {
+    display: block;
+    position: relative;
+    bottom: 100px;
+    background-color: #ededed;
+    border-radius: 10px;
+    padding: 13px;
 }
