@@ -81,6 +81,7 @@ script.onload = () => {
 document.body.appendChild(script);
 
 var chatSocket = null;
+var heartbeat = null;
 var current_page = 1;
 
 var entityMap = {
@@ -152,6 +153,16 @@ function toggleReaction(element) {
     }
 }
 
+function startHeartbeat() {
+    heartbeat = setInterval(function() {
+        chatSocket.send(JSON.stringify({"command": "heartbeat"}));
+    }, 30000);
+}
+
+function stopHeartbeat() {
+    clearInterval(heartbeat);
+}
+
 function showRoomList() {
     if (document.getElementById('local-peer-name').value != "" && document.getElementById('local-peer-email').value != "" &&
         document.getElementById('local-peer-company').value != "") {
@@ -196,6 +207,7 @@ if (clientToken == null) {
 chatSocket = new ReconnectingWebSocket('wss://metaversochat.youbot.us/ws/chat/exhibition/?clientToken=' + clientToken);
 
 chatSocket.onopen = function(e) {
+    startHeartbeat();
     document.getElementById("chat").removeEventListener("scroll", loadNextPage);
     current_page = 1;
     document.getElementById('roomList').innerHTML = "";
@@ -406,6 +418,7 @@ chatSocket.onmessage = function(e) {
 
 chatSocket.onclose = function(e) {
     console.log('host disconnected');
+    stopHeartbeat();
 };
 
 const sendButton = document.getElementById("send-message");
