@@ -496,3 +496,5 @@ deletePicture.addEventListener("click", function() {
             document.getElementById("profile-picture").style.backgroundImage = "../img/default_pic.jpg";
         });
 });
+
+document.querySelector('.tooltip').tooltip();
