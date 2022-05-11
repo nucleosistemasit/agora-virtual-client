@@ -294,7 +294,7 @@ function printRoom(data) {
     roomNode.dataset.id = data.id;
     roomNode.dataset.name = data.display_name;
     roomNode.setAttribute('onclick', 'connectRoom(this)');
-    roomNode.innerHTML = '<span class="inbox-icon room-picture align-middle tooltip" data-toggle="tooltip" title="' + data.display_name + '" style="background-image: url(' + data.operator_picture + ')"></span>';
+    roomNode.innerHTML = '<span class="inbox-icon room-picture align-middle tooltip-msg" data-toggle="tooltip" title="' + data.display_name + '" style="background-image: url(' + data.operator_picture + ')"></span>';
     document.getElementById('roomList').appendChild(roomNode);
 }
 
