@@ -497,4 +497,4 @@ deletePicture.addEventListener("click", function() {
         });
 });
 
-document.querySelector('.tooltip').tooltip();
+document.querySelector('.tooltip-msg').tooltip();
