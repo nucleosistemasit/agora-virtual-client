@@ -333,7 +333,7 @@ chatSocket.onmessage = function(e) {
         if (data.has_next_page) {
             setInfiniteScroll();
         }
-        if (data.connections == 1) {
+        if (!data.operator_is_online) {
             let offlineBox = document.getElementById('offlineBox');
             let offlineMsg = document.getElementById('offlineMsg');
             let offlineLink = document.getElementById('offlineLink');
