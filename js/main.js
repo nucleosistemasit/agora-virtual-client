@@ -7,7 +7,7 @@ if (typeof URLSearchParams !== 'undefined') {
 }
 
 var buildUrl = "Build";
-var loaderUrl = buildUrl + "Sicredi_WebGL.loader.js";
+var loaderUrl = buildUrl + "/Sicredi_WebGL.loader.js";
 var config = {
     dataUrl: buildUrl +  "/Sicredi_WebGL.data",
     frameworkUrl: buildUrl +   "/Sicredi_WebGL.framework.js",
