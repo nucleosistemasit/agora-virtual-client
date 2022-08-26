@@ -7,11 +7,11 @@ if (typeof URLSearchParams !== 'undefined') {
 }
 
 var buildUrl = "Build";
-var loaderUrl = buildUrl + "/WebGL.loader.js";
+var loaderUrl = buildUrl + "Sicredi_WebGL.loader.js";
 var config = {
-    dataUrl: buildUrl +  "/WebGL.data",
-    frameworkUrl: buildUrl +   "/WebGL.framework.js",
-    codeUrl: buildUrl +  "/WebGL.wasm",
+    dataUrl: buildUrl +  "/Sicredi_WebGL.data",
+    frameworkUrl: buildUrl +   "/Sicredi_WebGL.framework.js",
+    codeUrl: buildUrl +  "/Sicredi_WebGL.wasm",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Núcleo",
     productName: "Metaverso Caxias",
