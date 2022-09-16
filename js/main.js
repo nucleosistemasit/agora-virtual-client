@@ -7,11 +7,11 @@ if (typeof URLSearchParams !== 'undefined') {
 }
 
 var buildUrl = "Build";
-var loaderUrl = buildUrl + "/FiergsExpoWebGLBrotli.loader.js";
+var loaderUrl = buildUrl + "/FiergsExpoWebGL.loader.js";
 var config = {
-    dataUrl: buildUrl +  "FiergsExpoWebGLBrotli.data.br",
-    frameworkUrl: buildUrl +   "/FiergsExpoWebGLBrotli.framework.js.br",
-    codeUrl: buildUrl +  "/FiergsExpoWebGLBrotli.wasm.br",
+    dataUrl: buildUrl +  "FiergsExpoWebGL.data",
+    frameworkUrl: buildUrl +   "/FiergsExpoWebGL.framework.js",
+    codeUrl: buildUrl +  "/FiergsExpoWebGL.wasm",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Núcleo",
     productName: "Metaverso Caxias",
