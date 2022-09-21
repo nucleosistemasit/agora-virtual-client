@@ -6,12 +6,13 @@ if (typeof URLSearchParams !== 'undefined') {
     }
 }
 
-var buildUrl = "Build";
-var loaderUrl = buildUrl + "/FiergsExpoWebGL.loader.js";
+var buildUrl = "Build/";
+var builString = "FiergsExpoWebGL"
+var loaderUrl = buildUrl + builString + ".loader.js";
 var config = {
-    dataUrl: buildUrl +  "FiergsExpoWebGL.data",
-    frameworkUrl: buildUrl +   "/FiergsExpoWebGL.framework.js",
-    codeUrl: buildUrl +  "/FiergsExpoWebGL.wasm",
+    dataUrl: buildUrl + builString + ".data",
+    frameworkUrl: buildUrl + builString + ".framework.js",
+    codeUrl: buildUrl + builString + ".wasm",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Núcleo",
     productName: "Metaverso Caxias",
@@ -497,4 +498,4 @@ deletePicture.addEventListener("click", function() {
         });
 });
 
-document.querySelector('.tooltip-msg').tooltip();
+// document.querySelector('.tooltip-msg').tooltip();
