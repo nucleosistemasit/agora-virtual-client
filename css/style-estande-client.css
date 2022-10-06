@@ -270,7 +270,8 @@ p {
 
 #unity-container.unity-desktop {
     height: 100vh;
-    width: calc(70vw - 100px);
+/*     width: calc(70vw - 100px); */
+    width: 100vw;
     position: absolute; 
     right: 0%;
     top: 0%;
@@ -280,7 +281,8 @@ p {
 }
 
 #unity-canvas {
-    width: calc(70vw - 100px);
+/*     width: calc(70vw - 100px); */
+    width: 100vw;
     height: 100vh;
     cursor: default;
     transition: width 0.8s cubic-bezier(0, 0, 0, 1);
