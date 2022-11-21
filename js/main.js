@@ -7,7 +7,7 @@ if (typeof URLSearchParams !== 'undefined') {
 }
 
 var buildUrl = "Build/";
-var builString = "FiergsExpoWPalestra"
+var builString = "Sicredi_WebGL"
 var loaderUrl = buildUrl + builString + ".loader.js";
 var config = {
     dataUrl: buildUrl + builString + ".data",
